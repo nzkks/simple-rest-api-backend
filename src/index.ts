@@ -6,6 +6,8 @@ import bodyParser from 'body-parser';
 import http from 'http';
 import mongoose from 'mongoose';
 
+import router from './router';
+
 const app = express();
 
 app.use(
@@ -30,3 +32,5 @@ const MONGO_URI =
 mongoose.Promise = Promise;
 mongoose.connect(MONGO_URI);
 mongoose.connection.on('error', (error: Error) => console.log(error));
+
+app.use('/', router());
